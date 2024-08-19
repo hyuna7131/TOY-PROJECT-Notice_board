@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>검색 결과</title>
+</head>
+<body>
+    <h1>검색 결과</h1>
+    <ul>
+        {% for post in posts %}
+        <li>
+            <a href="{{ url_for('main.view_post', post_id=post.id) }}">{{ post.title }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('main.index') }}">목록으로</a>
+</body>
+</html>
