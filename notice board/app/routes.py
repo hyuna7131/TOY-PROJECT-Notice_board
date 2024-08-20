@@ -10,8 +10,8 @@ def index():
 
 @main.route('/post/<int:post_id>')
 def view_post(post_id):
-    post = get_posts('id', post_id)
-    return render_template('post.html', post=post)
+    posts = get_posts('id', post_id)
+    return render_template('post.html', posts=posts, post_id=post_id)
 
 @main.route('/create', methods=['GET', 'POST'])
 def create():
@@ -22,20 +22,20 @@ def create():
         return redirect(url_for('main.index'))
     return render_template('create.html')
 
-@main.route('/post/edit/<int:post_id>', methods=['GET', 'POST'])
+@main.route('/edit/<int:post_id>', methods=['GET', 'POST'])
 def edit(post_id):
     if request.method == 'POST':
         title = request.form['title']
         content = request.form['content']
         update_post(post_id, title, content)
         return redirect(url_for('main.view_post', post_id=post_id))
-    post = get_posts('id', post_id)
-    return render_template('edit.html', post=post)
+    posts = get_posts('id', post_id)
+    return render_template('edit.html', posts=posts)
 
-@main.route('/post/delete/<int:post_id>', methods=['POST'])
+@main.route('/delete/<int:post_id>', methods=['POST'])
 def delete(post_id):
     delete_post(post_id)
-    return redirect(url_for('main.index'))
+    return redirect(url_for('main.index', post_id=post_id))
 
 @main.route('/search', methods=['GET'])
 def search():
