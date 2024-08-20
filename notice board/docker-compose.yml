@@ -32,8 +32,9 @@ services:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: board
     volumes:
-      - ./init.sql:/docker-endpoint-initdb.d/init.sql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
       - db_data:/var/lib/mysql  # MySQL 데이터를 유지하기 위해 볼륨 사용
+      
     networks:
       - app-network
 
