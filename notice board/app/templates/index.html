@@ -7,20 +7,20 @@
     <title>게시판</title>
 </head>
 <body>
-    <h1>게시판</h1>
-    <a href="{{ url_for('main.create') }}">새 글 작성하기</a>
+    <h1>Notice Board</h1>
+    <a href="{{ url_for('main.create') }}">Create New Post</a>
     <form action="{{ url_for('main.search') }}" method="GET">
         <select name="type">
-            <option value="title">제목</option>
-            <option value="content">내용</option>
+            <option value="title">Title</option>
+            <option value="content">Context</option>
         </select>
         <input type="text" name="keyword" placeholder="검색어">
-        <button type="submit">검색</button>
+        <button type="submit">Search</button>
     </form>
     <ul>
         {% for post in posts %}
         <li>
-            <a href="{{ url_for('main.view_post', post_id=post.id) }}">{{ post.id }} : {{ post.title }}</a>
+            <a href="{{ url_for('main.view_post', post_id=post.id) }}">{{ post.id }} . {{ post.title }}</a>
         </li>
         {% endfor %}
     </ul>

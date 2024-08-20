@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <title>검색 결과</title>
+    <title>Search</title>
 </head>
 <body>
-    <h1>검색 결과</h1>
+    <h1>Search</h1>
     <ul>
         {% for post in posts %}
         <li>
@@ -15,6 +15,6 @@
         </li>
         {% endfor %}
     </ul>
-    <a href="{{ url_for('main.index') }}">목록으로</a>
+    <a href="{{ url_for('main.index') }}">Back to Home</a>
 </body>
 </html>

@@ -30,7 +30,7 @@ def edit(post_id):
         update_post(post_id, title, content)
         return redirect(url_for('main.view_post', post_id=post_id))
     posts = get_posts('id', post_id)
-    return render_template('edit.html', posts=posts)
+    return render_template('edit.html', posts=posts, post_id=post_id)
 
 @main.route('/delete/<int:post_id>', methods=['POST'])
 def delete(post_id):

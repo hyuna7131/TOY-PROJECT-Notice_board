@@ -13,4 +13,5 @@ COPY app.py app.py
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Flask 앱 실행
-CMD ["flask", "run", "--host=0.0.0.0"]
+# CMD ["flask", "run", "--host=0.0.0.0"]
+CMD ["python3", "app.py"]
